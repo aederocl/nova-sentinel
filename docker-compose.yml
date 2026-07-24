@@ -1,0 +1,11 @@
+services:
+  nova-sentinel:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./data:/data
+    environment:
+      DATABASE_PATH: /data/nova_sentinel.db
+      JSONL_PATH: /data/alerts.jsonl
+      ATOM_PATH: /data/feed.xml

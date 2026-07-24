@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nova-sentinel"
+version = "0.1.0"
+description = "Monitor public transient feeds and alert on plausible nova candidates"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Nova Sentinel contributors"}]
+dependencies = [
+  "beautifulsoup4>=4.12",
+  "httpx>=0.27",
+  "python-dotenv>=1.0",
+  "typer>=0.12",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[project.scripts]
+nova-sentinel = "nova_sentinel.cli:app"
+
+[tool.setuptools.packages.find]
+include = ["nova_sentinel*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
